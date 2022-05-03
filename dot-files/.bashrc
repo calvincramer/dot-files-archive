@@ -173,11 +173,11 @@ shopt -s histappend     # Use history file
 # For some reason this creates 10 blank windows in a tmux session every seconds
 
 # Source other init files
-if [[ -f "/folk/ccramer/.bashrc_wc" ]]; then
-    source /folk/ccramer/.bashrc_wc
+if [[ -f "/folk/ccramer/.bashrc_wr" ]]; then
+    source /folk/ccramer/.bashrc_wr
 fi
 # Alias definitions:
-if [ -f ~/.bash_aliases ]; then
+if [[ -f ~/.bash_aliases ]]; then
     . ~/.bash_aliases
 fi
 if [[ -f "/folk/ccramer/.bash_aliases_wr" ]]; then
