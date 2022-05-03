@@ -1,0 +1,19 @@
+[user]
+	email = Calvin.Cramer@windriver.com
+	name = Calvin Cramer
+
+# Pretty log (replaced in aliases)
+[log]
+  # date = relative
+  date = default
+[format]
+  # gitlogprettyshort
+  #pretty = format:%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)
+  #gitlogprettylong
+  #pretty = format:%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)%C(auto)%b%C(auto)%N
+[merge]
+	tool = meld
+[diff]
+	renameLimit = 8000
+[core]
+	autocrlf = false

@@ -1,0 +1,7 @@
+! Set default font to be bigger than incredibly tiny
+xterm*font:     *-fixed-*-*-*-18-*
+
+! Jump up/down a lot
+xterm*vt100.translations: #override \n\
+ Shift <Key>Home: scroll-back(1000) \n\
+ Shift <Key>End: scroll-forw(1000)

@@ -1,0 +1,17 @@
+#!/bin/sh
+# Runs with tiger VNC server and gnome session flashback
+echo "Hello! Starting new VNC session..."
+xrdb $HOME/.Xresources                  # X window server database
+xsetroot -mod 10 10 -fg black -bg gray  # background if desktop environment doesn't draw to x window
+export XKL_XMODMAP_DISABLE=1  # Helps custom keyboards work
+export XDG_CURRENT_DESKTOP="GNOME-Flashback:Unity"
+export XDG_MENU_PREFIX="gnome-flashback-"
+unset DBUS_SESSION_BUS_ADDRESS
+autocutsel -fork                        # For clipboard
+vncconfig -nowin &
+
+# Gnome session (older gnome version)
+# gnome-session --session=gnome-flashback-metacity &   # --disable-acceleration-check  --debug
+
+# xfce
+startxfce4 &
