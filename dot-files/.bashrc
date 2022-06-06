@@ -203,3 +203,5 @@ fi
 
 # Created by `userpath` on 2021-04-20 01:07:50
 export PATH="$PATH:/home/cal/.local/bin"
+
+complete -C studio-cli studio-cli

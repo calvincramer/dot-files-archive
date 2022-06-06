@@ -17,3 +17,4 @@
 	renameLimit = 8000
 [core]
 	autocrlf = false
+	editor = subl -n -w
