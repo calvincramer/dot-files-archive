@@ -28,6 +28,7 @@ PATHS_DICT = {
     '.Xresources':      '~/.Xresources',
     '.xscreensaver':    '~/.xscreensaver',
     '.xstartup':        '~/.vnc/xstartup',
+    'skin.yml':         '~/.config/k9s/skin.yml',
 }
 # ~/.config/
 # ~/.private/
