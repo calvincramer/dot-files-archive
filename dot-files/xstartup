@@ -10,6 +10,10 @@ unset DBUS_SESSION_BUS_ADDRESS
 autocutsel -fork                        # For clipboard
 vncconfig -nowin &
 
+# New modes
+xrandr --newmode "2560x1440_60.00"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync
+xrandr --addmode VNC-0 2560x1440_60.00
+
 # Gnome session (older gnome version)
 # gnome-session --session=gnome-flashback-metacity &   # --disable-acceleration-check  --debug
 
