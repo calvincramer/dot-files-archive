@@ -33,6 +33,7 @@ alias unmount="umount"  # Why it wasn't created as 'unmount' is baffling to me.
 alias who-just-names-uniq="who | cut -f 1 -d ' ' | sort | uniq"
 alias x='xclip -selection clipboard'
 alias xclip='xclip -selection clipboard'                                        # Default xclip to system clipboard
+alias docker-rm-exited-containers='docker ps -a | grep "Exited" | cut -d" " -f1 | xargs docker rm'
 
 # Tmux
 alias tmux-switch-to-light="tmux source-file ~/.tmux_light.conf"
@@ -44,7 +45,7 @@ alias watch-ll='watch -n1 -d -c ls -la --color=always'
 alias watch-docker-ps='watch -n1 -d docker ps -a --format "{{.ID}}\\\\t{{.Command}}\\\\t{{.Status}}\\\\t{{.Image}}"'
 
 # Python code formatter
-alias my-black="black -t py39 -l 120"
+alias my-black="black -t py310 -l 160"
 
 # Output color (these commands don't output color when piped or redirected)
 alias diff-color="diff --color=always"
