@@ -41,6 +41,7 @@ alias tmux-switch-to-dark="tmux source-file ~/.tmux_dark.conf"
 
 # Watch things
 alias watch-1s-diff='watch -n1 -d'      # One second interval and highlight differences
+alias watch-30s-diff='watch -n30 -d'
 alias watch-ll='watch -n1 -d -c ls -la --color=always'
 alias watch-docker-ps='watch -n1 -d docker ps -a --format "{{.ID}}\\\\t{{.Command}}\\\\t{{.Status}}\\\\t{{.Image}}"'
 
