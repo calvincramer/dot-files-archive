@@ -12,10 +12,8 @@ ARCHIVE_DIR = join(dirname(realpath(__file__)), 'dot-files')
 
 PATHS = [
     '~/.bash_aliases',
-    '~/.bash_aliases_wr',
     '~/.bash_profile',
     '~/.bashrc',
-    '~/.bashrc_wr',
     '~/.gdbinit',
     '~/.gitconfig',
     '~/.inputrc',
