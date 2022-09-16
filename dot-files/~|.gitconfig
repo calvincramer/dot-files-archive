@@ -15,6 +15,11 @@
 	tool = meld
 [diff]
 	renameLimit = 8000
+	tool = vimdiff3
 [core]
 	autocrlf = false
 	editor = subl -n -w
+[color]
+	ui = true
+[difftool "vimdiff3"]
+	path = vim
