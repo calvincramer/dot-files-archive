@@ -29,6 +29,7 @@ PATHS = [
     '~/.xscreensaver',
     '~/.vnc/xstartup',
     '~/.config/k9s/skin.yml',
+    '~/.config/nvim/init.vim',
 ]
 
 def copy_to_archive(name: str, p: str) -> bool:
