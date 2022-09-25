@@ -39,6 +39,16 @@ alias docker-rm-exited-containers='docker ps -a | grep "Exited" | cut -d" " -f1 
 alias tmux-switch-to-light="tmux source-file ~/.tmux_light.conf"
 alias tmux-switch-to-dark="tmux source-file ~/.tmux_dark.conf"
 
+# Vim -> nvim
+alias vi-orig='/usr/bin/vi'
+alias vim-orig='/usr/bin/vim'
+alias view-orig='usr/bin/view'
+alias vimdiff-orif='/usr/bin/vimdiff'
+alias vi='nvim'
+alias vim='nvim'
+alias view='nvim -R'
+alias vimdiff='nvim -d'
+
 # Watch things
 alias watch-1s-diff='watch -n1 -d'      # One second interval and highlight differences
 alias watch-30s-diff='watch -n30 -d'
