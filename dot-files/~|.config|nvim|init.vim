@@ -29,7 +29,7 @@ set termguicolors               " Enables 24-bit terminal color support
 set ttyfast                     " Speed up scrolling in Vim (doesn't actually do anything in nvim)
 set wildignorecase              " ignore case in tab completion
 set wildmenu                    " menu to see options in tab completion
-set wildmode=longest,full       " tab completion in command line
+set wildmode=list:longest,full  " tab completion in command line, like bash
 
 filetype plugin indent on       " auto-indenting depending on file type
 filetype plugin on              " enables file type detection
@@ -40,8 +40,9 @@ syntax on                       " syntax highlighting
 "set matchtime=3                 " showmatch time (in tenths of seconds)
 
 " Colors
-hi CursorLine guibg=#1e3137     " cursorline
-hi CursorColumn guibg=#0C262C gui=bold    " CursorColumn
+hi CursorLine guibg=#1e3137             " horizontal line on cursor
+hi CursorColumn guibg=#0C262C gui=bold  " vertical line on cursor
+"hi NeoTreeIndentMarker guibg=#fe3137   " neo-tree indent vertical line |
 
 
 """"" Plugins
@@ -54,9 +55,9 @@ call plug#begin("~/.vim/plugged")
     Plug 'SirVer/ultisnips'         " Code snippet completion
     Plug 'honza/vim-snippets'       " more code snippets
 
-    " File explorer
-    "Plug 'scrooloose/nerdtree'      " File explorer
-    Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v2.x'}
+    " File explorer (see Lua config)
+    "Plug 'scrooloose/nerdtree'      " don't like
+    "Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v2.x'}
 
     " Etc
     Plug 'ryanoasis/vim-devicons'   " Icons
@@ -69,6 +70,8 @@ call plug#begin("~/.vim/plugged")
     " https://github.com/sunjon/Shade.nvim
 call plug#end()
 
+" Lua config
+source $HOME/.config/nvim/_init.lua
 
 " colorscheme evening
 " colorscheme dracula
