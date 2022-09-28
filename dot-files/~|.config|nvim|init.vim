@@ -11,6 +11,9 @@ set confirm                     " prompt before losing info
 set cursorline                  " highlight current row
 set expandtab                   " converts tabs to white space
 set fileignorecase              " ignore case for files
+set foldcolumn=auto:4             " columns that shows areas/ranges to fold/expand
+set foldmethod=syntax           " fold code on syntax
+set foldlevelstart=99           " start with no code folded
 set hlsearch                    " highlight all search results
 set ignorecase                  " case insensitive searching
 set incsearch                   " search while the search pattern is being typed
@@ -39,16 +42,12 @@ syntax on                       " syntax highlighting
 " Turn off
 "set matchtime=3                 " showmatch time (in tenths of seconds)
 
-" Colors
-hi CursorLine guibg=#1e3137             " horizontal line on cursor
-hi CursorColumn guibg=#0C262C gui=bold  " vertical line on cursor
-"hi NeoTreeIndentMarker guibg=#fe3137   " neo-tree indent vertical line |
-
-
-""""" Plugins
+""""" Plug plugins
 call plug#begin("~/.vim/plugged")
+    " Color schemes
     " Plug 'dracula/vim'
     " Plug 'Mofiqul/dracula.nvim'
+    Plug 'EdenEast/nightfox.nvim'   " https://github.com/EdenEast/nightfox.nvim
 
     " Code completion
     Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Code completion
@@ -73,9 +72,12 @@ call plug#end()
 " Lua config
 source $HOME/.config/nvim/_init.lua
 
-" colorscheme evening
-" colorscheme dracula
+" Set color scheme used
+colorscheme nightfox
 
+" Colors - manually set by me
+hi CursorLine guibg=#1e3137             " horizontal line on cursor
+hi CursorColumn guibg=#0C262C gui=bold  " vertical line on cursor
 
 " Toggle cursor row / line highlighting
 :nnoremap H :set cursorline! cursorcolumn!<CR>
