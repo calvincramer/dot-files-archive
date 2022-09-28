@@ -18,7 +18,7 @@
 	tool = vimdiff3
 [core]
 	autocrlf = false
-	editor = subl -n -w
+	editor = nvim
 [color]
 	ui = true
 [difftool "vimdiff3"]
