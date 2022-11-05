@@ -20,7 +20,6 @@ PATHS = [
     '~/.inputrc',
     '~/.plan',
     '~/.profile',
-    '~/.rhosts',
     '~/.selected_editor',
     '~/.tmux.conf',
     '~/.tmux_dark.conf',
@@ -28,7 +27,6 @@ PATHS = [
     '~/.toprc',
     '~/.vimrc',
     '~/.Xresources',
-    '~/.xscreensaver',
     '~/.vnc/xstartup',
     '~/.config/k9s/skin.yml',
     '~/.config/nvim/init.vim',
@@ -81,7 +79,8 @@ def diff(diff_dir_is_archive_to_local: bool) -> None:
 
 def restore() -> None:
     """Copy archive to local"""
-    pass
+    print("TODO!")
+    return None
 
 def main() -> None:
     # Args
