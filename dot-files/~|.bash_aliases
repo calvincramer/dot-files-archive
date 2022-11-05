@@ -10,6 +10,7 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Random:
+alias cat="bat"
 alias CD='cd'
 alias df-calvin='df -hlPT'
 alias disk-usage-as-su='sudo baobab'
@@ -34,6 +35,7 @@ alias who-just-names-uniq="who | cut -f 1 -d ' ' | sort | uniq"
 alias x='xclip -selection clipboard'
 alias xclip='xclip -selection clipboard'                                        # Default xclip to system clipboard
 alias docker-rm-exited-containers='docker ps -a | grep "Exited" | cut -d" " -f1 | xargs docker rm'
+alias random-8-hex-chars='xxd -l 4 -p /dev/urandom'
 
 # Tmux
 alias tmux-switch-to-light="tmux source-file ~/.tmux_light.conf"

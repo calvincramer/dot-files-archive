@@ -16,3 +16,4 @@ export PATH
 # export PS1
 
 unset USERNAME
+. "$HOME/.cargo/env"

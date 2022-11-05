@@ -73,7 +73,7 @@ call plug#end()
 source $HOME/.config/nvim/_init.lua
 
 " Set color scheme used
-colorscheme carbonfox
+colorscheme duskfox    "carbonfox
 
 " Colors - manually set by me
 hi CursorLine guibg=#1e3137             " horizontal line on cursor
