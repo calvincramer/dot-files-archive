@@ -37,6 +37,9 @@ alias xclip='xclip -selection clipboard'                                        
 alias docker-rm-exited-containers='docker ps -a | grep "Exited" | cut -d" " -f1 | xargs docker rm'
 alias random-8-hex-chars='xxd -l 4 -p /dev/urandom'
 
+# Pycharm
+alias pycharm='/opt/pycharm/pycharm-community-2022.2.3/bin/pycharm.sh &'
+
 # Tmux
 alias tmux-switch-to-light="tmux source-file ~/.tmux_light.conf"
 alias tmux-switch-to-dark="tmux source-file ~/.tmux_dark.conf"
