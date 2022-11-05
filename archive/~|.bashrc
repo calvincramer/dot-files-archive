@@ -141,13 +141,18 @@ cd-no-ls () {
     builtin cd "$@"
 }
 
+############################ PATHS #############################################
+
+export PATH="~/repos/linux-scripts:$PATH"
+export PATH=$PATH:/usr/local/go/bin
+
 ############################ BINDINGS ##########################################
 
 # Bind keys like ctrl+arrowkey to work through ssh
 bind '"\e[1;5D" backward-word'      # ctrl+left
 bind '"\e[1;5C" forward-word'       # ctrl+right
 
-############################ ETC ##########################################
+############################ ETC ###############################################
 
 # Save tmux to bash_history. Don't save duplicate commands, don't log commands starting with whitespace
 export HISTCONTROL=ignorespace:ignoredups:erasedups
@@ -168,39 +173,26 @@ shopt -s histappend     # Use history file
 # tmux-session restore > /dev/null 2>&1
 # For some reason this creates 10 blank windows in a tmux session every seconds
 
-# Source other init files
-if [[ -f "/folk/ccramer/.bashrc_wr" ]]; then
-    source /folk/ccramer/.bashrc_wr
-fi
 # Alias definitions:
 if [[ -f ~/.bash_aliases ]]; then
     . ~/.bash_aliases
 fi
-if [[ -f "/folk/ccramer/.bash_aliases_wr" ]]; then
-    source /folk/ccramer/.bash_aliases_wr
+
+if [ "$(hostname)" == "tex-ccramer-lx1" ]; then
+    export PATH=${PATH}:/var/lib/flatpak/exports/share
+    export PATH=${PATH}:/home/cjc/.local/share/flatpak/exports/share
 fi
 
-############################ AUTOMATICALLY ADDED ###############################
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/cal/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/cal/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/cal/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/cal/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-
-# Created by `userpath` on 2021-04-20 01:07:50
-export PATH="$PATH:/home/cal/.local/bin"
-
-complete -C studio-cli studio-cli
+if [ "$(hostname)" == "ala-ccramer-lx1" ]; then
+    export PATH="$PATH:/home/cal/.local/bin"
+    complete -C studio-cli studio-cli
+    if [[ -f "/folk/ccramer/.bash_aliases_wr" ]]; then
+        source /folk/ccramer/.bash_aliases_wr
+    fi
+    if [[ -f "/folk/ccramer/.bashrc_wr" ]]; then
+        source /folk/ccramer/.bashrc_wr
+    fi
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -2,14 +2,12 @@
 
 # Copy config files to a folder
 
+import os
 import os.path
 from os.path import dirname, realpath, join, expanduser, basename
 from shutil import copy2
 from pathlib import Path
 from argparse import ArgumentParser
-import difflib
-import sys
-
 
 ARCHIVE_DIR = join(dirname(realpath(__file__)), 'archive')
 
@@ -48,16 +46,7 @@ def _check_file(_path: str) -> tuple[bool, str | None, str | None]:
     if not os.path.isfile(local_path):
         print(f'Exists, but is not a file: {name}: {local_path}')
         return False, None, None
-    return True, local_path, archive_path
-
-def _diff_files(path_left, path_right) -> None:
-    """Prints diff of two files. Files are assumed to exist"""
-    sys.stdout.writelines(difflib.context_diff(
-        a=open(path_left, 'r').read(), 
-        b=open(path_right, 'r').read(), 
-        fromfile=path_left, 
-        tofile=path_right)
-    )
+    return True, str(local_path), str(archive_path)
 
 def check_files() -> None:
     """Check files to be archived exist locally"""
@@ -87,7 +76,7 @@ def diff(diff_dir_is_archive_to_local: bool) -> None:
             continue
         left = archive if diff_dir_is_archive_to_local else local
         right = local if diff_dir_is_archive_to_local else archive
-        _diff_files(path_left=left , path_right=right)
+        os.system(f"diff --color=always --unified '{left}' '{right}'")
     return None
 
 def restore() -> None:
