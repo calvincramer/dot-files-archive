@@ -141,11 +141,6 @@ cd-no-ls () {
     builtin cd "$@"
 }
 
-############################ PATHS #############################################
-
-export PATH="~/repos/linux-scripts:$PATH"
-export PATH=$PATH:/usr/local/go/bin
-
 ############################ BINDINGS ##########################################
 
 # Bind keys like ctrl+arrowkey to work through ssh
@@ -181,10 +176,13 @@ fi
 if [ "$(hostname)" == "tex-ccramer-lx1" ]; then
     export PATH=${PATH}:/var/lib/flatpak/exports/share
     export PATH=${PATH}:/home/cjc/.local/share/flatpak/exports/share
+    export PATH=${PATH}:~/repos/linux-scripts
 fi
 
 if [ "$(hostname)" == "ala-ccramer-lx1" ]; then
     export PATH="$PATH:/home/cal/.local/bin"
+    export PATH=$PATH:/usr/local/go/bin
+
     complete -C studio-cli studio-cli
     if [[ -f "/folk/ccramer/.bash_aliases_wr" ]]; then
         source /folk/ccramer/.bash_aliases_wr
