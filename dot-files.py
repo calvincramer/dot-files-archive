@@ -36,7 +36,7 @@ PATHS = [
 
 def _check_file(_path: str) -> tuple[bool, str | None, str | None]:
     name = basename(_path)
-    archive_path = join(ARCHIVE_DIR, local_path.replace(os.path.sep, '|'))
+    archive_path = join(ARCHIVE_DIR, _path.replace(os.path.sep, '|'))
     # Expand any '~' home tildes, then resolve relative and synlinks
     local_path = Path(expanduser(_path)).resolve()
     if not os.path.exists(local_path):
