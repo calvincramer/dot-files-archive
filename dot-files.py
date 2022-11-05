@@ -33,7 +33,7 @@ PATHS = [
     '~/.config/nvim/_init.lua',
 ]
 
-def _check_file(_path: str) -> tuple[bool, str | None, str | None]:
+def _check_file(_path: str):
     name = basename(_path)
     archive_path = join(ARCHIVE_DIR, _path.replace(os.path.sep, '|'))
     # Expand any '~' home tildes, then resolve relative and synlinks
@@ -46,7 +46,7 @@ def _check_file(_path: str) -> tuple[bool, str | None, str | None]:
         return False, None, None
     return True, str(local_path), str(archive_path)
 
-def check_files() -> None:
+def check_files():
     """Check files to be archived exist locally"""
     all_good = True
     for _path in PATHS:
@@ -57,7 +57,7 @@ def check_files() -> None:
         print("All good!")
     return None
 
-def save() -> None:
+def save():
     """Copy local files to the archive"""
     for _path in PATHS:
         ok, local, archive = _check_file(_path)
@@ -66,7 +66,7 @@ def save() -> None:
         copy2(src=local, dst=archive, follow_symlinks=True)
     return None
 
-def diff(diff_dir_is_archive_to_local: bool) -> None:
+def diff(diff_dir_is_archive_to_local: bool):
     """Diff local and archive"""
     for _path in PATHS:
         ok, local, archive = _check_file(_path)
@@ -77,12 +77,12 @@ def diff(diff_dir_is_archive_to_local: bool) -> None:
         os.system(f"diff --color=always --unified '{left}' '{right}'")
     return None
 
-def restore() -> None:
+def restore():
     """Copy archive to local"""
     print("TODO!")
     return None
 
-def main() -> None:
+def main():
     # Args
     parser = ArgumentParser()
     group = parser.add_mutually_exclusive_group()
