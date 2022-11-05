@@ -6,7 +6,10 @@ import os.path
 from os.path import dirname, realpath, join, expanduser, basename
 from shutil import copy2
 from pathlib import Path
-from argparse import ArgumentParser, Namespace
+from argparse import ArgumentParser
+import difflib
+import sys
+
 
 ARCHIVE_DIR = join(dirname(realpath(__file__)), 'archive')
 
@@ -47,10 +50,24 @@ def _check_file(_path: str) -> tuple[bool, str | None, str | None]:
         return False, None, None
     return True, local_path, archive_path
 
+def _diff_files(path_left, path_right) -> None:
+    """Prints diff of two files. Files are assumed to exist"""
+    sys.stdout.writelines(difflib.context_diff(
+        a=open(path_left, 'r').read(), 
+        b=open(path_right, 'r').read(), 
+        fromfile=path_left, 
+        tofile=path_right)
+    )
+
 def check_files() -> None:
     """Check files to be archived exist locally"""
+    all_good = True
     for _path in PATHS:
-        _ = _check_file(_path)
+        ok, _, _ = _check_file(_path)
+        if not ok:
+            all_good = False
+    if all_good:
+        print("All good!")
     return None
 
 def save() -> None:
@@ -64,7 +81,14 @@ def save() -> None:
 
 def diff(diff_dir_is_archive_to_local: bool) -> None:
     """Diff local and archive"""
-    pass
+    for _path in PATHS:
+        ok, local, archive = _check_file(_path)
+        if not ok:
+            continue
+        left = archive if diff_dir_is_archive_to_local else local
+        right = local if diff_dir_is_archive_to_local else archive
+        _diff_files(path_left=left , path_right=right)
+    return None
 
 def restore() -> None:
     """Copy archive to local"""
