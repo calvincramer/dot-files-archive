@@ -47,6 +47,12 @@ def _check_file(_path: str) -> tuple[bool, str | None, str | None]:
         return False, None, None
     return True, local_path, archive_path
 
+def check_files() -> None:
+    """Check files to be archived exist locally"""
+    for _path in PATHS:
+        _ = _check_file(_path)
+    return None
+
 def save() -> None:
     """Copy local files to the archive"""
     for _path in PATHS:
@@ -68,13 +74,16 @@ def main() -> None:
     # Args
     parser = ArgumentParser()
     group = parser.add_mutually_exclusive_group()
+    group.add_argument("--check-files", action='store_true', required=False, help="Check that the files to be archived exist on your machine")
     group.add_argument("--save", action='store_true', required=False, help="Save local files to archive")
     group.add_argument("--diff-la", action='store_true', required=False, help="Diff local to archive")
     group.add_argument("--diff-al", action='store_true', required=False, help="Diff archive to local")
     group.add_argument("--restore-DANGER", action='store_true', required=False, help="Copy archive files to local files. DANGEROUS. WILL OVERWRITE YOUR LOCAL FILES WITH THE CONTENT IN THE ARCHIVE.")
     args = parser.parse_args()
 
-    if args.save is True:
+    if args.check_files is True:
+        check_files()
+    elif args.save is True:
         save()
     elif args.diff_la is True:
         diff(diff_dir_is_archive_to_local=False)
