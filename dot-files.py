@@ -34,24 +34,26 @@ PATHS = [
     '~/.config/nvim/_init.lua',
 ]
 
+def _check_file(_path: str) -> tuple[bool, str | None, str | None]:
+    name = basename(_path)
+    archive_path = join(ARCHIVE_DIR, local_path.replace(os.path.sep, '|'))
+    # Expand any '~' home tildes, then resolve relative and synlinks
+    local_path = Path(expanduser(_path)).resolve()
+    if not os.path.exists(local_path):
+        print(f'Does not exist: {name}: {local_path}')
+        return False, None, None
+    if not os.path.isfile(local_path):
+        print(f'Exists, but is not a file: {name}: {local_path}')
+        return False, None, None
+    return True, local_path, archive_path
+
 def save() -> None:
     """Copy local files to the archive"""
-    def _copy_to_archive(name: str, p: str) -> None:
-        save_to = str(p).replace(os.path.sep, '|')    # Preserve path info
-        save_to = join(ARCHIVE_DIR, save_to)
-        p = expanduser(p)     # Expand any '~' home tildes
-        p = Path(p).resolve() # Resolve relative and synlinks in path:
-        if not os.path.exists(p):
-            print(f'Does not exist: {name} -> {p}')
-            return None
-        if not os.path.isfile(p):
-            print(f'Exists, but is not a file: {name} -> {p}')
-            return None
-        copy2(src=p, dst=save_to, follow_symlinks=True)
-        return None
-
-    for path in PATHS:
-        _copy_to_archive(basename(path), path)
+    for _path in PATHS:
+        ok, local, archive = _check_file(_path)
+        if not ok:
+            continue
+        copy2(src=local, dst=archive, follow_symlinks=True)
     return None
 
 def diff(diff_dir_is_archive_to_local: bool) -> None:
