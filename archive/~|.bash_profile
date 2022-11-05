@@ -1,10 +1,14 @@
 # .bash_profile
 
-# Runs on ssh connection
+# Runs on ssh connection, tmux
 
 # Get the aliases and functions
-if [ -f /home/cal/.bashrc ]; then
-    . /home/cal/.bashrc
+if [ "$(hostname)" == "ala-ccramer-lx1" ]; then
+    if [ -f /home/cal/.bashrc ]; then
+        . /home/cal/.bashrc
+    fi
+else
+    . ~/.bashrc
 fi
 
 # User specific environment and startup programs
