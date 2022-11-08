@@ -177,6 +177,10 @@ if [ "$(hostname)" == "tex-ccramer-lx1" ]; then
     export PATH=${PATH}:/var/lib/flatpak/exports/share
     export PATH=${PATH}:/home/cjc/.local/share/flatpak/exports/share
     export PATH=${PATH}:~/repos/linux-scripts
+
+    if [[ -d "/home/cjc/repos" ]]; then
+        builtin cd /home/cjc/repos
+    fi
 fi
 
 if [ "$(hostname)" == "ala-ccramer-lx1" ]; then
@@ -189,6 +193,9 @@ if [ "$(hostname)" == "ala-ccramer-lx1" ]; then
     fi
     if [[ -f "/folk/ccramer/.bashrc_wr" ]]; then
         source /folk/ccramer/.bashrc_wr
+    fi
+    if [[ -d "/home/cal/repos" ]]; then
+        builtin cd /home/cal/repos
     fi
 fi
 
