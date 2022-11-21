@@ -71,6 +71,7 @@ alias grep-hilight="less -p"
 # Git
 alias git-log-pretty="git log --pretty=format:'%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)' --date=relative"
 alias git-log-pretty-absolute-date="git log --pretty=format:'%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)' --date=short"
+alias git-log-tree="git log --oneline --decorate --graph --all"
 # Cleanup old clone
 alias git-cleanup-fsck-prune-gc="git fsck --full --unreachable; git prune; git gc --aggressive"
 
