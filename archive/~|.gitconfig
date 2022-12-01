@@ -15,11 +15,14 @@
 	tool = meld
 [diff]
 	renameLimit = 8000
-	tool = vimdiff3
+	tool = nvimdiff
 [core]
 	autocrlf = false
 	editor = nvim
 [color]
 	ui = true
-[difftool "vimdiff3"]
-	path = vim
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[difftool]
+	prompt = false
+	trustExitCode = true
