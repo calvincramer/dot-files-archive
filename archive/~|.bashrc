@@ -135,11 +135,6 @@ cd() {
     # Always do `ls` after cd:
     builtin cd "$@" && ls -F
 }
-cd-no-ls () {
-    # cd with no arguments stop from going to home
-    [[ $# -eq 0 ]] && return
-    builtin cd "$@"
-}
 
 ############################ BINDINGS ##########################################
 
