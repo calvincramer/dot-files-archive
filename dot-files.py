@@ -16,6 +16,7 @@ PATHS = [
     "~/.bash_profile",
     "~/.bashrc",
     "~/.zshrc",
+    "~/.oh-my-zsh/themes/crunch-calvin.zsh-theme",
     "~/.gdbinit",
     "~/.gitconfig",
     "~/.inputrc",

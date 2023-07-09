@@ -90,6 +90,9 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-autocomplete
+    colored-man-pages
+    docker
+    golang
 )
 
 source $ZSH/oh-my-zsh.sh
