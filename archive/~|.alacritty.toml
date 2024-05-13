@@ -1,0 +1,64 @@
+shell = "/bin/zsh"
+working_directory = "/home/cjc/repos"
+live_config_reload = true
+
+[env]
+TERMINAL_EMULATOR = "alacritty"
+
+[window]
+dimensions = { columns = 130, lines = 50 }
+padding = { x = 8, y = 8 }
+dynamic_padding = true
+decorations = "None"
+opacity = 0.97
+blur = true
+startup_mode = "Windowed"
+resize_increments = true
+
+[scrolling]
+history = 20000
+multiplier = 1
+
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+size = 14
+
+[colors]
+[colors.primary]
+foreground = "#D5E3E6"
+background = "#131b20"
+
+[colors.normal]
+black = "#6b6b6b"
+red = "#DC322F"
+green = "#5DB016"
+yellow = "#DF7C07"
+blue = "#268BD2"
+magenta = "#D33682"
+cyan = "#924FC6"
+white = "#EEE8D5"
+
+[colors.bright]
+black = "#999999"
+red = "#e35c59"
+green = "#86e633"
+yellow = "#f9a034"
+blue = "#5ba9e1"
+magenta = "#dd649f"
+cyan = "#b180d6"
+white = "#f9f7f1"
+
+[colors.dim]
+black = "#383838"
+red = "#831816"
+green = "#2c520a"
+yellow = "#945405"
+blue = "#185581"
+magenta = "#922057"
+cyan = "#5f2c87"
+white = "#dacea4"
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_timeout = 0
+thickness = 0.1

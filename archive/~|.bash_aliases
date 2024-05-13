@@ -7,10 +7,11 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Random:
+alias brown-noise="nohup play -q -n -t alsa synth brownnoise </dev/null 1>/dev/null 2>&1 &"
 alias cat="bat"
 alias cd-repos='cd ~/repos'
 alias CD='cd'
-alias code='codium'
+#alias code='codium'
 alias df-calvin='df -hlPT'
 alias diff-color="diff --color=always" # Helps when piping or redirection
 alias disk-usage-as-su='sudo baobab'

@@ -9,6 +9,7 @@ set colorcolumn=180,200,220,240 " column borders
 set confirm                     " prompt before losing info
 "set cursorcolumn                " highlight current column
 set cursorline                  " highlight current row
+set diffopt=iwhite
 set expandtab                   " converts tabs to white space
 set fileignorecase              " ignore case for files
 set foldcolumn=auto:4             " columns that shows areas/ranges to fold/expand

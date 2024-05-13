@@ -1,3 +1,4 @@
+# Calvin's theme
 # CRUNCH - created from Steve Eley's cat waxing.
 # Initially hacked from the Dallas theme. Thanks, Dallas Reedy.
 #
@@ -44,4 +45,4 @@ local CRUNCH_PROMPT="${YELLOW}\$${RESET}"
 # Put it all together!
 PROMPT="${CRUNCH_USER}@${CRUNCH_HOST}:${CRUNCH_DIR}
 ${CRUNCH_PROMPT} "
-RPROMPT="\$(git_prompt_info) \$(git_prompt_status)"
+# RPROMPT="\$(git_prompt_info) \$(git_prompt_status)${RESET}"

@@ -1,6 +1,6 @@
 [user]
-    email = Calvin.Cramer@windriver.com
-    name = Calvin Cramer
+	email = calvincramer@gmail.com
+	name = Calvin Lei-Cramer
 
 # Pretty log (replaced in aliases)
 [log]
@@ -26,3 +26,5 @@
 [difftool]
     prompt = false
     trustExitCode = true
+[credential]
+	helper = store

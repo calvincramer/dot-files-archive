@@ -30,6 +30,9 @@ if &diff
     highlight! link DiffText Todo
 endif
 
+"vimdiff no whitespace
+set diffopt+=iwhite
+
 
 " ALL VIM COLOR SCHEMES:
 " blue        | bad

@@ -218,7 +218,8 @@ if [ "$(hostname)" = "tex-ccramer-lx1" ]; then
     export PATH="${HOME}/gems/bin:${PATH}"
 
     if [[ -d "/home/cjc/repos" ]]; then
-        builtin cd /home/cjc/repos
+        # builtin cd /home/cjc/repos
+        :
     fi
 fi
 
@@ -234,7 +235,8 @@ if [ "$(hostname)" = "ala-ccramer-lx1" ]; then
         source /folk/ccramer/.bashrc_wr
     fi
     if [[ -d "/home/cal/repos" ]]; then
-        builtin cd /home/cal/repos
+        # builtin cd /home/cal/repos
+        :
     fi
 fi
 

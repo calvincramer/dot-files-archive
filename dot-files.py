@@ -33,6 +33,7 @@ PATHS = [
     "~/.config/k9s/skin.yml",
     "~/.config/nvim/init.vim",
     "~/.config/nvim/_init.lua",
+    "~/.alacritty.toml",
 ]
 
 
@@ -106,12 +107,8 @@ def main():
         required=False,
         help="Save local files to archive",
     )
-    group.add_argument(
-        "--diff-la", action="store_true", required=False, help="Diff local to archive"
-    )
-    group.add_argument(
-        "--diff-al", action="store_true", required=False, help="Diff archive to local"
-    )
+    group.add_argument("--diff-la", action="store_true", required=False, help="Diff local to archive")
+    group.add_argument("--diff-al", action="store_true", required=False, help="Diff archive to local")
     group.add_argument(
         "--restore-DANGER",
         action="store_true",
