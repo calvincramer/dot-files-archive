@@ -1,5 +1,5 @@
 [general]
-working_directory = "/home/cjc/repos"
+# working_directory = "~/repos" <-- doesn't support ~ yet
 live_config_reload = true
 
 [env]
@@ -65,7 +65,7 @@ unfocused_hollow = true
 thickness = 0.1
 
 [terminal]
-shell = "/bin/zsh"
+shell = "/usr/bin/zsh"
 
 [debug]
 render_timer = false

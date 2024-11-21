@@ -226,6 +226,15 @@ if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
+if [ "$(hostname)" = "soho-ccramer-lx1" ]; then
+    export PATH=${PATH}:~/repos/linux-scripts
+
+    if [[ -d "/home/ccramer-loc/repos" ]]; then
+        builtin cd /home/ccramer-loc/repos
+        :
+    fi
+fi
+
 if [ "$(hostname)" = "tex-ccramer-lx1" ]; then
     export PATH=${PATH}:/var/lib/flatpak/exports/share
     export PATH=${PATH}:/home/cjc/.local/share/flatpak/exports/share

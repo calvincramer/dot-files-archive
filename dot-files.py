@@ -103,8 +103,8 @@ def restore():
             continue
         if os.path.isfile(local):
             print(f"Overriding local {local}")
-        print(f"cp {archive} -> {local}")
-        # copy2(src=archive, dst=local, follow_symlinks=True)
+        os.makedirs(os.path.dirname(local), exist_ok=True)
+        copy2(src=archive, dst=local, follow_symlinks=True)
     return None
 
 
