@@ -4,6 +4,22 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Stop auto escaping braces on paste please
+DISABLE_MAGIC_FUNCTIONS="true"
+if [[ $DISABLE_MAGIC_FUNCTIONS != true ]]; then
+  for d in $fpath; do
+    if [[ -e "$d/url-quote-magic" ]]; then
+        if is-at-least 5.1; then
+            autoload -Uz bracketed-paste-magic
+            zle -N bracketed-paste bracketed-paste-magic
+        fi
+        autoload -Uz url-quote-magic
+        zle -N self-insert url-quote-magic
+      break
+    fi
+  done
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -44,7 +60,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 7
+zstyle ':omz:update' frequency 30
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"

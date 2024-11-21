@@ -1,4 +1,4 @@
-shell = "/bin/zsh"
+[general]
 working_directory = "/home/cjc/repos"
 live_config_reload = true
 
@@ -7,16 +7,16 @@ TERMINAL_EMULATOR = "alacritty"
 
 [window]
 dimensions = { columns = 130, lines = 50 }
-padding = { x = 8, y = 8 }
+padding = { x = 4, y = 4 }
 dynamic_padding = true
 decorations = "None"
-opacity = 0.97
+opacity = 0.98
 blur = true
 startup_mode = "Windowed"
 resize_increments = true
 
 [scrolling]
-history = 20000
+history = 30000
 multiplier = 1
 
 [font]
@@ -29,7 +29,7 @@ foreground = "#D5E3E6"
 background = "#131b20"
 
 [colors.normal]
-black = "#6b6b6b"
+black = "#1c1c1c"
 red = "#DC322F"
 green = "#5DB016"
 yellow = "#DF7C07"
@@ -39,7 +39,7 @@ cyan = "#924FC6"
 white = "#EEE8D5"
 
 [colors.bright]
-black = "#999999"
+black = "#2d2d2d"
 red = "#e35c59"
 green = "#86e633"
 yellow = "#f9a034"
@@ -49,7 +49,7 @@ cyan = "#b180d6"
 white = "#f9f7f1"
 
 [colors.dim]
-black = "#383838"
+black = "#0c0c0c"
 red = "#831816"
 green = "#2c520a"
 yellow = "#945405"
@@ -61,4 +61,11 @@ white = "#dacea4"
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 blink_timeout = 0
+unfocused_hollow = true
 thickness = 0.1
+
+[terminal]
+shell = "/bin/zsh"
+
+[debug]
+render_timer = false

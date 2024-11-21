@@ -7,7 +7,8 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Random:
-alias brown-noise="nohup play -q -n -t alsa synth brownnoise </dev/null 1>/dev/null 2>&1 &"
+alias brown-noise="nohup play -q -n -t alsa synth brownnoise vol -10dB </dev/null 1>/dev/null 2>&1 &; disown %1"
+alias brown-noise-stop='pkill --full "play -q -n -t alsa synth brownnoise vol -10dB"'
 alias cat="bat"
 alias cd-repos='cd ~/repos'
 alias CD='cd'
@@ -23,6 +24,7 @@ alias git-cleanup-fsck-prune-gc="git fsck --full --unreachable; git prune; git g
 alias git-log-pretty-absolute-date="git log --pretty=format:'%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)' --date=short"
 alias git-log-pretty="git log --pretty=format:'%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)' --date=relative"
 alias git-log-tree="git log --oneline --decorate --graph --all"
+alias git-branch-list-sizes='git for-each-ref --format="%(refname)" | while read branch; do size=$(git rev-list --disk-usage --objects HEAD..$branch); echo "$size $branch"; done | sort -n'
 alias grep-color="grep --color=always" # Helps when piping or redirection
 alias grep-hilight="less -p" # Helps when piping or redirection
 alias grepfiles="grep -lm1"

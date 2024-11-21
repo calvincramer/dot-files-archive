@@ -37,11 +37,20 @@ PATHS = [
 ]
 
 
-def _check_file(_path: str):
-    name = basename(_path)
-    archive_path = join(ARCHIVE_DIR, _path.replace(os.path.sep, "|"))
+def _pathRealToSave(_path: str) -> str:
+    return _path.replace(os.path.sep, "|")
+
+
+def getLocalAndArchivePath(_path: str):
+    archive_path = join(ARCHIVE_DIR, _pathRealToSave(_path))
     # Expand any '~' home tildes, then resolve relative and synlinks
     local_path = Path(expanduser(_path)).resolve()
+    return str(local_path), str(archive_path)
+
+
+def _check_file(_path: str):
+    name = basename(_path)
+    local_path, archive_path = getLocalAndArchivePath(_path)
     if not os.path.exists(local_path):
         print(f"Does not exist: {name}: {local_path}")
         return False, None, None
@@ -87,7 +96,15 @@ def diff(diff_dir_is_archive_to_local: bool):
 
 def restore():
     """Copy archive to local"""
-    print("TODO!")
+    for _path in PATHS:
+        local, archive = getLocalAndArchivePath(_path)
+        if not os.path.isfile(archive):
+            print(f"Missing saved file: {archive}")
+            continue
+        if os.path.isfile(local):
+            print(f"Overriding local {local}")
+        print(f"cp {archive} -> {local}")
+        # copy2(src=archive, dst=local, follow_symlinks=True)
     return None
 
 
