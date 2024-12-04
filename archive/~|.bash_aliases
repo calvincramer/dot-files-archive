@@ -54,6 +54,7 @@ alias tmux-switch-to-dark="tmux source-file ~/.tmux_dark.conf"
 alias tmux-switch-to-light="tmux source-file ~/.tmux_light.conf"
 alias top-real="/usr/bin/top"
 alias top="htop -d 20"
+alias tree="tree -C"
 alias unmount="umount"  # Why it wasn't created as 'unmount' is baffling to me.
 alias vi-orig='/usr/bin/vi'
 alias vi='nvim'

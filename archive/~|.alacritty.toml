@@ -1,5 +1,5 @@
 [general]
-# working_directory = "~/repos" <-- doesn't support ~ yet
+# working_directory = "~/repos"     <-- doesn't support ~ yet
 live_config_reload = true
 
 [env]

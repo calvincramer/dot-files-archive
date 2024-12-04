@@ -12,6 +12,7 @@ from argparse import ArgumentParser
 ARCHIVE_DIR = join(dirname(realpath(__file__)), "archive")
 
 PATHS = [
+    "~/.alacritty.toml",
     "~/.bash_aliases",
     "~/.bash_profile",
     "~/.bashrc",
@@ -30,10 +31,11 @@ PATHS = [
     "~/.vimrc",
     "~/.Xresources",
     "~/.vnc/xstartup",
+    "~/.config/Code/User/keybindings.json",
+    "~/.config/Code/User/settings.json",
     "~/.config/k9s/skin.yml",
     "~/.config/nvim/init.vim",
     "~/.config/nvim/_init.lua",
-    "~/.alacritty.toml",
 ]
 
 
