@@ -243,8 +243,9 @@ if [ "$(hostname)" = "tex-ccramer-lx1" ]; then
     export PATH="${HOME}/gems/bin:${PATH}"
 
     if [[ -d "/home/cjc/repos" ]]; then
-        # builtin cd /home/cjc/repos
-        :
+        if [ "${SHLVL}" = "1" ]; then
+            builtin cd /home/cjc/repos
+        fi
     fi
 fi
 
