@@ -17,7 +17,7 @@ resize_increments = true
 
 [scrolling]
 history = 30000
-multiplier = 1
+multiplier = 5
 
 [font]
 normal = { family = "Hack Nerd Font", style = "Regular" }

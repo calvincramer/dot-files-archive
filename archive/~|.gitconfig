@@ -1,30 +1,56 @@
-[user]
-	email = calvincramer@gmail.com
-	name = Calvin Lei-Cramer
-
-# Pretty log (replaced in aliases)
-[log]
-    # date = relative
-    date = default
-[format]
-    # gitlogprettyshort
-    #pretty = format:%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)
-    #gitlogprettylong
-    #pretty = format:%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)%C(auto)%b%C(auto)%N
-[merge]
-    tool = meld
-[diff]
-    renameLimit = 8000
-    tool = nvimdiff
+[advice]
+    detachedHead = false
+[alias]
+    s = status
+    st = status
+    co = commit
+    ch = checkout
+    br = branch
+    l = log
+[branch]
+    sort = -committerdate
+[checkout]
+    workers = 4
+[color]
+    ui = true
+[commit]
+    verbose = true
 [core]
     autocrlf = false
     editor = nvim
-[color]
-    ui = true
-[difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[credential]
+	helper = store
+[diff]
+    renameLimit = 8000
+    tool = nvimdiff
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 [difftool]
     prompt = false
     trustExitCode = true
-[credential]
-	helper = store
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[fetch]
+    all = true
+[init]
+    defaultBranch = main
+[log]
+    date = iso
+[merge]
+    tool = meld
+[pull]
+    rebase = true
+    ff = only
+[push]
+    default = simple
+    autoSetupRemote = true
+[rerere]
+    enabled = true
+    autoupdate = true
+[tag]
+    sort = version:refname
+[user]
+	email = calvincramer@gmail.com
+	name = Calvin Lei-Cramer

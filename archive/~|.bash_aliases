@@ -71,3 +71,5 @@ alias watch-ll='watch -n1 -d -c ls -la --color=always'
 alias who-just-names-uniq="who | cut -f 1 -d ' ' | sort | uniq"
 alias x='xclip -selection clipboard'
 alias xclip='xclip -selection clipboard' # Default xclip to system clipboard
+
+alias cal-image-strip-metadata='mogrify -strip'
