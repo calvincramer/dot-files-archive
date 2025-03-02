@@ -9,6 +9,8 @@ from shutil import copy2
 from pathlib import Path
 from argparse import ArgumentParser
 
+from py_clc_lib.cmd import systemSh
+
 ARCHIVE_DIR = join(dirname(realpath(__file__)), "archive")
 
 PATHS = [
@@ -92,7 +94,7 @@ def diff(diff_dir_is_archive_to_local: bool):
             continue
         left = archive if diff_dir_is_archive_to_local else local
         right = local if diff_dir_is_archive_to_local else archive
-        os.system(f"diff --color=always --unified '{left}' '{right}'")
+        systemSh(f"diff --color=always --unified '{left}' '{right}'")
     return None
 
 
