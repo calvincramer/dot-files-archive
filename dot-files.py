@@ -106,7 +106,9 @@ def restore():
             print(f"Missing saved file: {archive}")
             continue
         if os.path.isfile(local):
-            print(f"Overriding local {local}")
+            print(f"Overriding existing {local}")
+        else:
+            print(f"Creating new {local}")
         os.makedirs(os.path.dirname(local), exist_ok=True)
         copy2(src=archive, dst=local, follow_symlinks=True)
     return None
