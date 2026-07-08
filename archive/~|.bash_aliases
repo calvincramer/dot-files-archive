@@ -7,7 +7,7 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Random:
-alias brown-noise="nohup play -q -n -t alsa synth brownnoise vol -10dB </dev/null 1>/dev/null 2>&1 &; disown %1"
+alias brown-noise="nohup play -q -n -t alsa synth brownnoise vol -10dB </dev/null 1>/dev/null 2>&1 & disown %1"
 alias brown-noise-stop='pkill --full "play -q -n -t alsa synth brownnoise vol -10dB"'
 alias cat="bat"
 alias cd-repos='cd ~/repos'
