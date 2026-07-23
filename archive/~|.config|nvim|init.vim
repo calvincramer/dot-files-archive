@@ -43,6 +43,11 @@ syntax on                       " syntax highlighting
 " Turn off
 "set matchtime=3                 " showmatch time (in tenths of seconds)
 
+map!  <Find>   <Home>
+map   <Find>   <Home>
+map!  <Select> <End>
+map   <Select> <End>
+
 """"" Plug plugins
 call plug#begin("~/.vim/plugged")
     " Color schemes
