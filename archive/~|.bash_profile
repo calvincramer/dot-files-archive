@@ -4,11 +4,11 @@
 
 # Get the aliases and functions
 if [ "$(hostname)" == "ala-ccramer-lx1" ]; then
-    if [ -f /home/cal/.bashrc ]; then
-        . /home/cal/.bashrc
-    fi
+	if [ -f /home/cal/.bashrc ]; then
+		. /home/cal/.bashrc
+	fi
 else
-    . ~/.bashrc
+	. ~/.bashrc
 fi
 
 # User specific environment and startup programs
@@ -20,4 +20,4 @@ export PATH
 # export PS1
 
 unset USERNAME
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
