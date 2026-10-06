@@ -31,7 +31,7 @@ alias grepfiles="grep -lm1"
 alias i="top"
 alias ks="ls"
 alias less-color="less -r"
-alias ll='ls -AdhlL --time-style="+%Y-%m-%d" *'
+alias ll='ls -AhlL --time-style="+%Y-%m-%d"'
 alias ls-absolute="readlink -f *"
 alias LS='ls'
 alias lsabsolute="readlink -f *"
