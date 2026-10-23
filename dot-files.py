@@ -9,7 +9,7 @@ from shutil import copy2
 from pathlib import Path
 from argparse import ArgumentParser
 
-from py_clc_lib.cmd import systemSh
+from lib_clc_py.cmd import systemSh
 
 ARCHIVE_DIR = join(dirname(realpath(__file__)), "archive")
 
