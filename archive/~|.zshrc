@@ -2,36 +2,44 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # Stop auto escaping braces on paste please
 DISABLE_MAGIC_FUNCTIONS="true"
 if [[ $DISABLE_MAGIC_FUNCTIONS != true ]]; then
-	for d in $fpath; do
-		if [[ -e "$d/url-quote-magic" ]]; then
-			if is-at-least 5.1; then
-				autoload -Uz bracketed-paste-magic
-				zle -N bracketed-paste bracketed-paste-magic
-			fi
-			autoload -Uz url-quote-magic
-			zle -N self-insert url-quote-magic
-			break
-		fi
-	done
+  for d in $fpath; do
+    if [[ -e "$d/url-quote-magic" ]]; then
+        if is-at-least 5.1; then
+            autoload -Uz bracketed-paste-magic
+            zle -N bracketed-paste bracketed-paste-magic
+        fi
+        autoload -Uz url-quote-magic
+        zle -N self-insert url-quote-magic
+      break
+    fi
+  done
 fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="crunch-calvin"
+# ZSH_THEME="crunch-calvin"
 # darkblood good
 # crunch good
 # alanpeabody good
 # robbyrussell
 # mrtazz
 
-setopt histignorealldups sharehistory
+####################################################################################################
+# Plain ZSH no oh-my-zsh config
+# https://zsh.sourceforge.io/Doc/Release/Options.html#Options
+setopt HIST_IGNORE_ALL_DUPS    # no duplicates in history
+setopt HIST_IGNORE_DUPS        # ignore duplicate of previous command in history
+setopt HIST_IGNORE_SPACE       # ignore commands that start with space
+setopt SHARE_HISTORY           # read and write the history file
+
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 autoload -U compinit promptinit
@@ -40,6 +48,10 @@ promptinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+PS1="%B%F{cyan}%n%b%F{default}@%B%F{blue}%m%b%F{default}:%B%F{green}%d%F{default}%b"$'\n'"(zsh) %B%F{yellow}$%F{default}%b " #
+# "${debian_chroot:+($debian_chroot)}\[\033[01;36m\]%u\[\033[00m\]@\[\033[01;34m\]\H\[\033[00m\]:\[\033[01;32m\]$PWD\n\[\033[01;33m\]\$\[\033[00m\] "
+####################################################################################################
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -57,10 +69,10 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' mode reminder # just remind me to update when it's time
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 30
+# zstyle ':omz:update' frequency 30
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -102,16 +114,16 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-	zsh-autocomplete
-	colored-man-pages
-	docker
-	golang
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-autocomplete
+    colored-man-pages
+    docker
+    golang
 )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -143,11 +155,11 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 ################################################################################
@@ -157,53 +169,53 @@ fi
 # (cd ..) n times, can also use (cdup ...) to go up three directories
 # Only does one cd, so you can use (cd -)
 function cdup() {
-	num_regex='^[1-9]([0-9]*)$'
-	dot_regex='^\.+$'
-	cd_string='..'
-	usage="Usage: $0 <positive number>    or    $0 <....> (n number of dots)"
-	# See if passed arg
-	if [ -z "$1" ]; then
-		echo $usage
-		return 1
-	fi
-	# Check number
-	if [[ $1 =~ $num_regex ]]; then # Parse arg as number
-		for ((i = 1; i < $1; i++)); do
-			cd_string="${cd_string}/.."
-		done
-		cd $cd_string
-		echo $(pwd)
-		return 0
-	fi
-	# Check dots
-	if [[ $1 =~ $dot_regex ]]; then # Parse arg as dots
-		for ((i = 1; i < ${#1}; i++)); do
-			cd_string="${cd_string}/.."
-		done
-		cd $cd_string
-		echo $(pwd)
-		return 0
-	fi
-	# Not a positive number or dots
-	echo $usage
-	return 1
+    num_regex='^[1-9]([0-9]*)$'
+    dot_regex='^\.+$'
+    cd_string='..'
+    usage="Usage: $0 <positive number>    or    $0 <....> (n number of dots)";
+    # See if passed arg
+    if [ -z "$1" ]; then
+        echo $usage;
+        return 1;
+    fi
+    # Check number
+    if [[ $1 =~ $num_regex ]] ; then        # Parse arg as number
+        for (( i=1; i < $1; i++ )); do
+            cd_string="${cd_string}/.."
+        done
+        cd $cd_string
+        echo `pwd`
+        return 0;
+    fi
+    # Check dots
+    if [[ $1 =~ $dot_regex ]] ; then        # Parse arg as dots
+        for (( i=1; i < ${#1}; i++ )); do
+            cd_string="${cd_string}/.."
+        done
+        cd $cd_string
+        echo `pwd`
+        return 0;
+    fi
+    # Not a positive number or dots
+    echo $usage;
+    return 1;
 }
 
 # Change terminal title
 function change-term-title() {
-	if [[ $# -ne 1 ]]; then
-		echo "Need to supply new title"
-		return
-	fi
-	printf '\033]2;%s\033\\' $1 # Fun!
+    if [[ $# -ne 1 ]]; then
+        echo "Need to supply new title"
+        return
+    fi
+    printf '\033]2;%s\033\\' $1     # Fun!
 }
 
 # Change how default `cd` behaves:
 cd() {
-	# cd with no arguments stop from going to home
-	[[ $# -eq 0 ]] && return
-	# Always do `ls` after cd:
-	builtin cd "$@" && ls -F
+    # cd with no arguments stop from going to home
+    [[ $# -eq 0 ]] && return
+    # Always do `ls` after cd:
+    builtin cd "$@" && ls -F
 }
 
 ############################ BINDINGS ##########################################
@@ -223,50 +235,52 @@ cd() {
 
 # Alias definitions:
 if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 if [ "$(hostname)" = "soho-ccramer-lx1" ]; then
-	export PATH=${PATH}:~/repos/linux-scripts
+    export PATH=${PATH}:~/repos/linux-scripts
 
-	if [[ -d "/home/ccramer-loc/repos" ]]; then
-		builtin cd /home/ccramer-loc/repos
-		:
-	fi
+    if [[ -d "/home/ccramer-loc/repos" ]]; then
+        builtin cd /home/ccramer-loc/repos
+        :
+    fi
 fi
 
 if [ "$(hostname)" = "tex-ccramer-lx1" ]; then
-	export PATH=${PATH}:/var/lib/flatpak/exports/share
-	export PATH=${PATH}:/home/cjc/.local/share/flatpak/exports/share
-	export PATH=${PATH}:~/repos/linux-scripts
-	export GEM_HOME="${HOME}/gems"
-	export PATH="${HOME}/gems/bin:${PATH}"
+    export PATH=${PATH}:/var/lib/flatpak/exports/share
+    export PATH=${PATH}:/home/cjc/.local/share/flatpak/exports/share
+    export PATH=${PATH}:~/repos/linux-scripts
+    export GEM_HOME="${HOME}/gems"
+    export PATH="${HOME}/gems/bin:${PATH}"
 
-	if [[ -d "/home/cjc/repos" ]]; then
-		if [ "${SHLVL}" = "1" ]; then
-			builtin cd /home/cjc/repos
-		fi
-	fi
+    if [[ -d "/home/cjc/repos" ]]; then
+        if [ "${SHLVL}" = "1" ]; then
+            builtin cd /home/cjc/repos
+        fi
+    fi
 fi
 
 if [ "$(hostname)" = "ala-ccramer-lx1" ]; then
-	export PATH="$PATH:/home/cal/.local/bin"
-	export PATH=$PATH:/usr/local/go/bin
+    export PATH="$PATH:/home/cal/.local/bin"
+    export PATH=$PATH:/usr/local/go/bin
 
-	complete -C studio-cli studio-cli
-	if [[ -f "/folk/ccramer/.bash_aliases_wr" ]]; then
-		source /folk/ccramer/.bash_aliases_wr
-	fi
-	if [[ -f "/folk/ccramer/.bashrc_wr" ]]; then
-		source /folk/ccramer/.bashrc_wr
-	fi
-	if [[ -d "/home/cal/repos" ]]; then
-		# builtin cd /home/cal/repos
-		:
-	fi
+    complete -C studio-cli studio-cli
+    if [[ -f "/folk/ccramer/.bash_aliases_wr" ]]; then
+        source /folk/ccramer/.bash_aliases_wr
+    fi
+    if [[ -f "/folk/ccramer/.bashrc_wr" ]]; then
+        source /folk/ccramer/.bashrc_wr
+    fi
+    if [[ -d "/home/cal/repos" ]]; then
+        # builtin cd /home/cal/repos
+        :
+    fi
 fi
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
+
+. "$HOME/.local/share/../bin/env"

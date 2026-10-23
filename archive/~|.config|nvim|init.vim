@@ -43,11 +43,6 @@ syntax on                       " syntax highlighting
 " Turn off
 "set matchtime=3                 " showmatch time (in tenths of seconds)
 
-map!  <Find>   <Home>
-map   <Find>   <Home>
-map!  <Select> <End>
-map   <Select> <End>
-
 """"" Plug plugins
 call plug#begin("~/.vim/plugged")
     " Color schemes
@@ -60,9 +55,13 @@ call plug#begin("~/.vim/plugged")
     Plug 'SirVer/ultisnips'         " Code snippet completion
     Plug 'honza/vim-snippets'       " more code snippets
 
-    " File explorer (see Lua config)
+    " File explorer (configured in _init.lua)
     "Plug 'scrooloose/nerdtree'      " don't like
-    "Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v2.x'}
+    Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v3.x'}
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-tree/nvim-web-devicons'
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 's1n7ax/nvim-window-picker', {'tag': 'v2.*'}
 
     " Etc
     Plug 'ryanoasis/vim-devicons'   " Icons

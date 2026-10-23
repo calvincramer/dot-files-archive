@@ -7,26 +7,31 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Random:
+alias brown-noise-quieter="nohup play -q -n -t alsa synth brownnoise vol -20dB </dev/null 1>/dev/null 2>&1 & disown %1"
+alias brown-noise-quiet="nohup play -q -n -t alsa synth brownnoise vol -15dB </dev/null 1>/dev/null 2>&1 & disown %1"
 alias brown-noise="nohup play -q -n -t alsa synth brownnoise vol -10dB </dev/null 1>/dev/null 2>&1 & disown %1"
-alias brown-noise-stop='pkill --full "play -q -n -t alsa synth brownnoise vol -10dB"'
+alias brown-noise-loud="nohup play -q -n -t alsa synth brownnoise vol -5dB </dev/null 1>/dev/null 2>&1 & disown %1"
+alias brown-noise-louder="nohup play -q -n -t alsa synth brownnoise vol -0dB </dev/null 1>/dev/null 2>&1 & disown %1"
+alias brown-noise-stop='pkill --full "play -q -n -t alsa synth brownnoise *"'
 alias cat="bat"
 alias cd-repos='cd ~/repos'
 alias CD='cd'
+alias clear='clear -x'  # Don't delete scrollback buffer. ctrl-l is better.
 #alias code='codium'
 alias df-calvin='df -hlPT'
 alias diff-color="diff --color=always" # Helps when piping or redirection
 alias disk-usage-as-su='sudo baobab'
-alias docker-rm-exited-containers='docker ps -a | grep "Exited" | cut -d" " -f1 | xargs docker rm'
-alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"' # sometimes tmux breaks terminal stuff, can trigger with fast `git log, q` plus maximizing / un-maximizing pane
+alias docker-rm-exited-containers='docker ps -a | grep "Exited" | cut -d" " -f1 | xargs -r docker rm'
+alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'                  # sometimes tmux breaks terminal stuff, can trigger with fast `git log, q` plus maximizing / un-maximizing pane
 alias folder-size-sorted="du -hd1 | sort -h"
 alias folder-size="du -hd1"
-alias git-cleanup-fsck-prune-gc="git fsck --full --unreachable; git prune; git gc --aggressive" # Cleanup old clone
+alias git-cleanup-fsck-prune-gc="git fsck --full --unreachable; git prune; git gc --aggressive"  # Cleanup old clone
 alias git-log-pretty-absolute-date="git log --pretty=format:'%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)' --date=short"
 alias git-log-pretty="git log --pretty=format:'%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%s %C(auto)(%gD%D)' --date=relative"
 alias git-log-tree="git log --oneline --decorate --graph --all"
 alias git-branch-list-sizes='git for-each-ref --format="%(refname)" | while read branch; do size=$(git rev-list --disk-usage --objects HEAD..$branch); echo "$size $branch"; done | sort -n'
 alias grep-color="grep --color=always" # Helps when piping or redirection
-alias grep-hilight="less -p"           # Helps when piping or redirection
+alias grep-hilight="less -p" # Helps when piping or redirection
 alias grepfiles="grep -lm1"
 alias i="top"
 alias ks="ls"
@@ -35,7 +40,7 @@ alias ll='ls -AhlL --time-style="+%Y-%m-%d"'
 alias ls-absolute="readlink -f *"
 alias LS='ls'
 alias lsabsolute="readlink -f *"
-alias my-black="black -t py310 -l 160" # Python code formatter
+alias my-black="black -t py310 -l 160"  # Python code formatter
 alias objDump='objdump'
 alias pycharm='/opt/pycharm/pycharm-community-2022.2.3/bin/pycharm.sh &'
 alias qemu-ia-32-smp4core='~/repos/qemu/build/qemu-system-i386       -nographic         -smp 4 -m 2G -machine q35 -cpu Nehalem -display none -serial stdio -monitor none -append "bootline:fs(0,0)host:vxWorks o=gei0" -kernel'
@@ -55,16 +60,16 @@ alias tmux-switch-to-light="tmux source-file ~/.tmux_light.conf"
 alias top-real="/usr/bin/top"
 alias top="htop -d 20"
 alias tree="tree -C"
-alias unmount="umount" # Why it wasn't created as 'unmount' is baffling to me.
+alias unmount="umount"  # Why it wasn't created as 'unmount' is baffling to me.
 alias vi-orig='/usr/bin/vi'
 alias vi='nvim'
-alias view-orig='/usr/bin/view'
+alias view-orig='usr/bin/view'
 alias view='nvim -R'
 alias vim-orig='/usr/bin/vim'
 alias vim='nvim'
 alias vimdiff-orif='/usr/bin/vimdiff'
 alias vimdiff='nvim -d'
-alias watch-1s-diff='watch -n1 -d' # One second interval and highlight differences
+alias watch-1s-diff='watch -n1 -d'      # One second interval and highlight differences
 alias watch-30s-diff='watch -n30 -d'
 alias watch-docker-ps='watch -n1 -d docker ps -a --format "{{.ID}}\\\\t{{.Command}}\\\\t{{.Status}}\\\\t{{.Image}}"'
 alias watch-ll='watch -n1 -d -c ls -la --color=always'
